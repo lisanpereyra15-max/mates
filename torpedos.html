@@ -1,0 +1,171 @@
+torpedos.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mates Torpedos | MATESULI CBA</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧉</text></svg>">
+
+    <style>
+        :root { 
+            --fondo: #F5F5DC; 
+            --texto: #2D3436; 
+            --acento: #7BB661; 
+            --tarjeta: #ffffff; 
+            --sidebar-bg: #2D3436; 
+            --blanco: #ffffff;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--fondo); color: var(--texto); display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* BARRA SUPERIOR */
+        .top-bar { position: fixed; top: 0; width: 100%; background-color: rgba(255,255,255,0.9); padding: 15px 20px; display: flex; align-items: center; border-bottom: 3px solid var(--acento); z-index: 1000; backdrop-filter: blur(5px); }
+        .hamburger-btn { font-size: 30px; cursor: pointer; background: none; border: none; color: var(--acento); margin-right: 20px; }
+        .nav-logo { font-weight: 900; font-size: 1.5rem; color: #444; text-decoration: none; text-transform: uppercase; }
+        .nav-logo span { color: var(--acento); }
+        
+        /* MENÚ LATERAL */
+        .sidenav { height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0; background-color: var(--sidebar-bg); overflow-x: hidden; transition: 0.3s; padding-top: 60px; box-shadow: 2px 0 10px rgba(0,0,0,0.5); }
+        .closebtn { position: absolute; top: 10px; right: 15px; font-size: 36px; text-decoration: none; color: #818181; }
+        .sidenav a, .dropdown-btn { padding: 15px 20px; text-decoration: none; font-size: 18px; color: #f1f1f1; display: block; transition: 0.3s; border: none; background: none; width: 100%; text-align: left; cursor: pointer; }
+        .sidenav a:hover, .dropdown-btn:hover { color: var(--acento); }
+        .dropdown-container { display: none; background-color: #3d4446; padding-left: 15px; }
+        .ver-todos { color: var(--acento) !important; font-weight: bold; }
+
+        /* HEADER */
+        header { text-align: center; padding: 120px 20px 40px; background-color: var(--blanco); }
+        .categoria-info h1 { font-size: 2.5rem; color: #333; margin-bottom: 10px; }
+        .categoria-info p { color: #666; font-style: italic; }
+
+        /* PRODUCTOS */
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; flex: 1; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        
+        .producto { background-color: var(--tarjeta); border-radius: 15px; overflow: hidden; transition: 0.3s; border: 1px solid #ddd; }
+        .producto:hover { transform: translateY(-5px); border-color: var(--acento); }
+        .foto-container { width: 100%; height: 280px; background-color: #f9f9f9; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .foto-container img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .info { padding: 20px; text-align: center; }
+        .info h3 { margin-bottom: 10px; font-size: 1.2rem; color: #333; }
+        .precio { font-size: 1.5rem; color: var(--acento); font-weight: bold; display: block; margin-bottom: 15px; }
+        .btn-comprar { background-color: var(--acento); color: white; padding: 12px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; transition: 0.3s; }
+        .btn-comprar:hover { background-color: #2D3436; }
+        
+        .floating-wsp { position: fixed; bottom: 20px; right: 20px; background-color: #25D366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 100; }
+        footer { text-align: center; padding: 40px; color: #777; background-color: #fff; border-top: 1px solid #eee; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <button class="hamburger-btn" onclick="openNav()">&#9776;</button>
+        <a href="index.html" class="nav-logo">MATESULI <span>CBA</span></a>
+    </div>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        
+        <a href="index.html" style="font-weight: 800; border-bottom: 1px solid #444; margin-bottom: 10px;">🏠 INICIO</a>
+
+        <a href="combos.html" style="color: var(--acento); font-weight: bold;">🔥 COMBOS</a>
+
+        <button class="dropdown-btn">Mates ▾</button>
+        <div class="dropdown-container">
+            <a href="imperiales.html">Imperiales</a>
+            <a href="camioneros.html">Camioneros</a>
+            <a href="torpedos.html">Torpedos</a>
+            <a href="madera-calabaza.html">Madera & Calabaza</a>
+        </div>
+
+        <button class="dropdown-btn">Yerbas ▾</button>
+        <div class="dropdown-container">
+            <a href="yerbas-organicas.html">Orgánicas</a>
+            <a href="yerbas-compuestas.html">Compuestas</a>
+            <a href="yerbas-clasicas.html">Clásicas</a>
+        </div>
+
+        <a href="bombillas.html">Bombillas</a>
+
+        <button class="dropdown-btn">Accesorios ▾</button>
+        <div class="dropdown-container">
+            <a href="termos.html">Termos</a>
+            <a href="yerberas.html">Yerberas & Azucareras</a>
+            <a href="accesorios.html">Otros Accesorios</a>
+        </div>
+    </div>
+
+    <header>
+        <div class="categoria-info">
+            <h1>Mates Torpedos</h1>
+            <p>Compactos, firmes y con el calce perfecto para tu mano.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            
+            <div class="producto">
+                <div class="foto-container">
+                    <img src="https://images.unsplash.com/photo-1576092762791-dd9e2220abd1?w=500" alt="Torpedo Negro">
+                </div>
+                <div class="info">
+                    <h3>Torpedo Negro Forrado</h3>
+                    <span class="precio">$31.500</span>
+                    <a href="https://wa.me/5493573495163?text=Hola! Me interesa el Torpedo Negro" class="btn-comprar">Lo quiero</a>
+                </div>
+            </div>
+
+            <div class="producto">
+                <div class="foto-container">
+                    <img src="https://images.unsplash.com/photo-1576092762791-dd9e2220abd1?w=501" alt="Torpedo Marrón">
+                </div>
+                <div class="info">
+                    <h3>Torpedo Marrón Vaqueta</h3>
+                    <span class="precio">$31.500</span>
+                    <a href="https://wa.me/5493573495163?text=Hola! Me interesa el Torpedo Marrón" class="btn-comprar">Lo quiero</a>
+                </div>
+            </div>
+
+            <div class="producto">
+                <div class="foto-container">
+                    <img src="https://images.unsplash.com/photo-1576092762791-dd9e2220abd1?w=502" alt="Torpedo Cincelado">
+                </div>
+                <div class="info">
+                    <h3>Torpedo Cincelado Alpaca</h3>
+                    <span class="precio">$37.000</span>
+                    <a href="https://wa.me/5493573495163?text=Hola! Me interesa el Torpedo Cincelado" class="btn-comprar">Lo quiero</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p style="margin-bottom: 8px; font-weight: bold;">MATESULI CBA &copy; 2026</p>
+        <p style="font-size: 12px;">Córdoba, Argentina</p>
+    </footer>
+
+    <a href="https://wa.me/5493573495163" class="floating-wsp">💬 Consultar stock</a>
+
+    <script>
+        function openNav() { document.getElementById("mySidenav").style.width = "280px"; }
+        function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
+        
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        for (var i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function() {
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
